@@ -78,7 +78,7 @@ int main(int argc, char **argv){
 
     const char *filename = argv[1];
         
-    unsigned char *data = (unsigned char*)malloc(width * height * pixel_per_components * 4);
+    unsigned char *data = (unsigned char*)malloc(width * height * 4);
     data = stbi_load(filename, &width, &height, &pixel_per_components, 4);
 
     if(data == NULL) {
