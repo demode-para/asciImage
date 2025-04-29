@@ -18,25 +18,16 @@ char *symbols = ".,:;!a#";
 char pixel_to_symbol(struct rgba_pixel px){
     float avg = (px.r + px.g + px.b)/3;
     float normalized_avg = avg /255;
-    normalized_avg *= N_OF_SYMBOLS;
+    normalized_avg *= (N_OF_SYMBOLS - 1);
     int index = (int)normalized_avg;
     return symbols[index];
 }
 
 int main(int argc, char **argv){
 
-    if(argc < 4){
-        fprintf(stderr, "Too few arguments!\nBasic Usage : \n \t[executable] [filename] [width] [height]\n");
-        return 1;
-    }
-    if(argc > 4){
-        fprintf(stderr, "Too many arguments!\nBasic Usage : \n \t[executable] [filename] [width] [height]\n");
-        return 1;
-    }
-
     const char *filename = argv[1];
-    int width = atoi(argv[2]); 
-    int height = atoi(argv[3]);
+    int width = 0; 
+    int height = 0;
     int pixel_per_components = 8;
     
         
