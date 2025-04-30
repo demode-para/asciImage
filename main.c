@@ -17,7 +17,7 @@ char *symbols = ".,:;!a#";
 
 int width = 0; 
 int height = 0;
-int pixel_per_components = 8;
+int components_per_pixel = 0;
 
 
 char pixel_to_symbol(struct rgba_pixel px){
@@ -77,9 +77,10 @@ int main(int argc, char **argv){
     }
 
     const char *filename = argv[1];
-        
-    unsigned char *data = (unsigned char*)malloc(width * height * 4);
-    data = stbi_load(filename, &width, &height, &pixel_per_components, 4);
+     
+    unsigned char *data = NULL;
+    data = stbi_load(filename, &width, &height, &components_per_pixel, 4);
+	
 
     if(data == NULL) {
         fprintf(stderr, "Failed to load image \n");
