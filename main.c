@@ -73,14 +73,13 @@ int main(int argc, char **argv){
         sizey = atoi(argv[3]);
     } else {
         fprintf(stderr, "\nWrong Usage \n\t[executable] [fileimage] [sizex] [sizey]");
-        return 0;
+        return 1;
     }
 
     const char *filename = argv[1];
      
     unsigned char *data = NULL;
     data = stbi_load(filename, &width, &height, &components_per_pixel, 4);
-	
 
     if(data == NULL) {
         fprintf(stderr, "Failed to load image \n");
